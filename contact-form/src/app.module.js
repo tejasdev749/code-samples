@@ -11,7 +11,7 @@
 // Create the main application module
 // First parameter: module name
 // Second parameter: array of dependencies (services, filters, other modules)
-let mainApp = angular.module('videoApp', []);
+angular.module('mainApp', ['phoneList','videoList']);
 
 console.log('AngularJS Application Initialized');
-console.log('Module: videoApp created');
+console.log('Module: mainApp created');

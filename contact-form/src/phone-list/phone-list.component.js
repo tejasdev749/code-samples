@@ -1,4 +1,4 @@
-mainApp.component("phoneList", {
+angular.module('phoneList').component("phoneList", {
   template:
   "<p>{{$ctrl.phones.length}}</p>" +
     "<ul>" +
