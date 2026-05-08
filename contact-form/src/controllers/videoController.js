@@ -1,5 +1,5 @@
 
-angular.module('videoApp').controller('VideoController',function($scope){
+mainApp.controller('VideoController',function($scope){
     let newVideo = {
         id:"",
         title:"",

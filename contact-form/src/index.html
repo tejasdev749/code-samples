@@ -20,6 +20,8 @@
           </tr>
         </tbody>
       </table>
+          <phone-list></phone-list>
+
       <button ng-click="showEdit()">Show Edit</button>
             <button ng-click="dismiss()">Dismiss</button>
       <div ng-show="isEditVisible">
@@ -38,10 +40,13 @@
         </form>
       </div>
     </div>
+    <phone-list></phone-list>
+        <phone-list></phone-list>
+
      <!-- AngularJS 1.x CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="app.js"></script>
   <script src="./controllers/videoController.js"></script>
-
+    <script src="./controllers/phone-list.component.js"></script>
   </body>
 </html>
