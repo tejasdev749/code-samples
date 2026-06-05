@@ -1,0 +1,27 @@
+<div>
+  <div>
+    <p>
+      Name
+      <input type="text" [(ngModel)]="name" />
+      <button>
+        Show Entered value<span>{{ name }}</span>
+      </button>
+    </p>
+    <p>
+      Email
+      <input type="text" [(ngModel)]="email" />
+      <button>
+        Show Entered value<span>{{ email }}</span>
+      </button>
+    </p>
+    <button (click)="submit()">Save</button>
+  </div>
+  <div>
+    <h2>Users</h2>
+    <ul>
+      @for (user of users; track user.name) {
+        <li>Name:{{ user.name }} Email: {{ user.email }}</li>
+      }
+    </ul>
+  </div>
+</div>
