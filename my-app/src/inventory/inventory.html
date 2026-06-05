@@ -1,0 +1,15 @@
+<form [formGroup]="inventoryForm">
+  <div>
+    <p>
+      Name
+      <input type="text" formControlName="name" />
+    </p>
+    <p>
+      Email
+      <input type="text" formControlName="email" />
+    </p>
+    <h2>Inventory Details</h2>
+    <p>{{ inventoryForm.value.name }}</p>
+    <p>{{ inventoryForm.value.email }}</p>
+  </div>
+</form>
