@@ -1,30 +1,23 @@
-const {Sequelize } = require("sequelize")
+const { Sequelize } = require("sequelize")
 
-let db = undefined;
+let connection = undefined;
 
-function connectDB(){
-  if(!db){
-    db = new Sequelize('database', '', '', {
+function initiateConnection() {
+  if (!connection) {
+    connection = new Sequelize('database', '', '', {
       dialect: 'sqlite',
       storage: '.data/database.sqlite',
       logging: false
     });
   }
-  return db
+  return connection
 }
 
-async function disconnectDB(){
-  db.close()
+async function disconnectDB() {
+  connection.close()
 }
 
-async function createTables(){
-  db.sync({
-      force: true
-  })
-}
- 
 module.exports = {
-  connectDB,
+  initiateConnection,
   disconnectDB,
-  createTables
 }
