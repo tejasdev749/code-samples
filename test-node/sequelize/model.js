@@ -37,6 +37,9 @@ async function createTables() {
                 favoriteColor: {
                     type: DataTypes.STRING,
                     defaultValue: 'Green'
+                },
+                country: {
+                    type: DataTypes.STRING,
                 }
             })
 
@@ -65,7 +68,7 @@ async function createTables() {
                 force: true
             })
             await Customer.sync({
-                force: true
+                alter: true
             })
             return { Customer, Order }
         }
@@ -76,7 +79,90 @@ async function createTables() {
 
 }
 
+function createProductModel() {
+    try {
+        const connection = initiateConnection()
+        if (testConnection(connection)) {
+            const products = connection.define('Product', {
+                productId: {
+                    type: DataTypes.INTEGER,
+                    autoIncrement: true,
+                    primaryKey: true,
+                },
+                productName: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                },
+                supplierID: {
+                    type: DataTypes.INTEGER,
+                },
+                categoryID: {
+                    type: DataTypes.INTEGER,
+                },
+                unit: {
+                    type: DataTypes.INTEGER,
+                    defaultValue: 1
+                },
+                price: {
+                    type: DataTypes.DOUBLE,
+                    allowNull: false,
+                }
+            })
+            return products
+        }
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+}
+
+async function createEmployeeTable() {
+    try {
+        const connection = initiateConnection()
+        if (testConnection(connection)) {
+            const Employee = connection.define('Employee', {
+                empId: {
+                    type: DataTypes.INTEGER,
+                    autoIncrement: true,
+                    primaryKey: true,
+                },
+                firstName: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                },
+                lastName: {
+                    type: DataTypes.STRING,
+                },
+                email: {
+                    type: DataTypes.STRING,
+                    validate: {
+                        len: [20, 30]
+                    }
+                },
+                dob: {
+                    type: DataTypes.DATE
+                },
+                favoriteColor: {
+                    type: DataTypes.STRING,
+                    defaultValue: 'Green'
+                },
+                country: {
+                    type: DataTypes.STRING,
+                }
+            })
+            await Employee.sync({
+                force: true
+            })
+
+            return Employee
+        }
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+}
+
 
 module.exports = {
-    createTables
+    createTables,
+    createProductModel,
+    createEmployeeTable
 }
